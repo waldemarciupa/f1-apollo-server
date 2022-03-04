@@ -1,34 +1,27 @@
 const { ApolloServer } = require('apollo-server');
+const { PrismaClient } = require('@prisma/client');
 const typeDefs = require('./schema');
 
-const races = [
-  {
-    id: 'bahrain-grand-prix',
-    season: '2022',
-    round: '1',
-    name: 'Bahrain Grand Prix',
-    location: 'Sakhir',
-    country: 'Bahrain',
-    url: 'https://www.formula1.com/en/racing/2022/Bahrain.html',
-    sessions: {
-      fp1: '2022-03-18T12:00:00Z',
-      fp2: '2022-03-18T15:00:00Z',
-      fp3: '2022-03-19T12:00:00Z',
-      qualifying: '2022-03-19T15:00:00Z',
-      gp: '2022-03-20T15:00:00Z',
-    },
-  },
-];
+const prisma = new PrismaClient();
 
 const resolvers = {
   Query: {
-    races: () => races,
+    races: async (parent, args, context) => {
+      return context.prisma.race.findMany({
+        include: {
+          sessions: true,
+        },
+      });
+    },
   },
 };
 
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  context: {
+    prisma,
+  },
 });
 
 server.listen().then(() => {

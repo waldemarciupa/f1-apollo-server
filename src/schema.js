@@ -11,7 +11,7 @@ const typeDefs = gql`
     "The race's season"
     season: String!
     "The race's round"
-    round: Int!
+    round: String!
     "The race's name"
     name: String!
     "The race's location"

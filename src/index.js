@@ -1,4 +1,7 @@
 const { ApolloServer } = require('apollo-server');
+const {
+  ApolloServerPluginLandingPageGraphQLPlayground,
+} = require('apollo-server-core');
 const { PrismaClient } = require('@prisma/client');
 const typeDefs = require('./schema');
 
@@ -22,6 +25,7 @@ const server = new ApolloServer({
   context: {
     prisma,
   },
+  plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
 server.listen().then(() => {

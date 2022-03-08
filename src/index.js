@@ -13,6 +13,7 @@ const resolvers = {
       return context.prisma.race.findMany({
         include: {
           sessions: true,
+          circuit: true,
         },
       });
     },

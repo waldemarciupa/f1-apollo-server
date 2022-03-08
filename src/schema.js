@@ -7,22 +7,23 @@ const typeDefs = gql`
   }
 
   type Race {
+    "The race id"
     id: ID!
-    "The race's season"
+    "The race season"
     season: String!
-    "The race's round"
+    "The race round"
     round: String!
-    "The race's name"
+    "The race name"
     name: String!
-    "The race's official formula1 url"
+    "The race wikipedia url"
     url: String!
-    "The race's circuit"
+    "The race circuit"
     circuit: Circuit!
-    "The race's sessions"
+    "The race sessions"
     sessions: Session!
   }
 
-  "The race's session"
+  "The race session date and time"
   type Session {
     fp1: String!
     fp2: String!
@@ -33,20 +34,24 @@ const typeDefs = gql`
 
   "The circuit"
   type Circuit {
-    "The ciruit's id"
+    "The ciruit id"
     id: String!
-    "The ciruit's location"
+    "The circuit name"
+    name: String!
+    "The ciruit location"
     location: String!
-    "The ciruit's country"
+    "The ciruit country"
     country: String!
     "The firtst grand prix at this circuit"
     firstGrandPrix: String!
-    "The ciruit's number of laps"
+    "The ciruit number of laps"
     numberOfLaps: String!
-    "The ciruit's length"
+    "The ciruit length in kilometers"
     circuitLength: String!
-    "The ciruit's distance"
+    "The ciruit distance in kilometers"
     raceDistance: String!
+    "The circuit wikipedia url"
+    url: String!
   }
 `;
 

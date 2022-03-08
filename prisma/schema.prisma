@@ -18,15 +18,17 @@ model Race {
 }
 
 model Circuit {
-  id               String @id
-  location         String
-  country          String
-  first_grand_prix String
-  number_of_laps   String
-  circuit_length   String
-  race_distance    String
-  race             Race   @relation(fields: [raceId], references: [id])
-  raceId           String @unique
+  id             String @id
+  name           String
+  location       String
+  country        String
+  firstGrandPrix String
+  numberOfLaps   String
+  circuitLength  String
+  raceDistance   String
+  race           Race   @relation(fields: [raceId], references: [id])
+  raceId         String @unique
+  url            String
 }
 
 model Session {

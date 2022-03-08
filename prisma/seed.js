@@ -4,20 +4,20 @@ const prisma = new PrismaClient();
 async function main() {
   await prisma.race.create({
     data: {
-      id: 'bahrain-grand-prix',
+      id: 'australian-grand-prix-2022',
       season: '2022',
-      round: '1',
-      name: 'Bahrain Grand Prix',
-      location: 'Sakhir',
-      country: 'Bahrain',
-      url: 'https://www.formula1.com/en/racing/2022/Bahrain.html',
+      round: '3',
+      name: 'Australian Grand Prix',
+      location: 'Melbourne',
+      country: 'Australia',
+      url: 'https://www.formula1.com/en/racing/2022/Australia.html',
       sessions: {
         create: {
-          fp1: '2022-03-18T12:00:00Z',
-          fp2: '2022-03-18T15:00:00Z',
-          fp3: '2022-03-19T12:00:00Z',
-          qualifying: '2022-03-19T15:00:00Z',
-          gp: '2022-03-20T15:00:00Z',
+          fp1: '2022-04-08T03:00:00Z',
+          fp2: '2022-04-08T06:00:00Z',
+          fp3: '2022-04-09T03:00:00Z',
+          qualifying: '2022-04-09T06:00:00Z',
+          gp: '2022-04-10T05:00:00Z',
         },
       },
     },

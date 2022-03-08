@@ -8,14 +8,25 @@ datasource db {
 }
 
 model Race {
-  id        String @id
-  season    String
-  round     String
-  name      String
-  location  String
-  country   String
-  url       String
-  sessions   Session?
+  id       String   @id
+  season   String
+  round    String
+  name     String
+  url      String
+  circuit  Circuit?
+  sessions Session?
+}
+
+model Circuit {
+  id               String @id
+  location         String
+  country          String
+  first_grand_prix String
+  number_of_laps   String
+  circuit_length   String
+  race_distance    String
+  race             Race   @relation(fields: [raceId], references: [id])
+  raceId           String @unique
 }
 
 model Session {
@@ -24,6 +35,6 @@ model Session {
   fp3        String
   qualifying String
   gp         String
-  race       Race @relation(fields: [raceId], references: [id])
-  raceId     String
+  race       Race   @relation(fields: [raceId], references: [id])
+  raceId     String @unique
 }

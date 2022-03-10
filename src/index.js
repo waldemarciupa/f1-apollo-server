@@ -17,6 +17,17 @@ const resolvers = {
         },
       });
     },
+    race: async (parent, args, context) => {
+      return context.prisma.race.findUnique({
+        where: {
+          id: args.id,
+        },
+        include: {
+          sessions: true,
+          circuit: true,
+        },
+      });
+    },
   },
 };
 

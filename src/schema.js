@@ -4,6 +4,8 @@ const typeDefs = gql`
   type Query {
     "Query to get races array"
     races: [Race!]!
+    "Query to get specific race by ID"
+    race(id: String): Race
   }
 
   type Race {
